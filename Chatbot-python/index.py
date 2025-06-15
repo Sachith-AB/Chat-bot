@@ -2,7 +2,17 @@ from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
 from training_list import all_training_data
 
-bot = ChatBot("chatbot", read_only=False, logic_adapters=["chatterbot.logic.BestMatch"]) 
+bot = ChatBot(
+    "chatbot", 
+    read_only=False, 
+    logic_adapters=[
+        {
+            "import_path": "chatterbot.logic.BestMatch",
+            "default_response": "sorry i don't have an answer",
+            "maximum_similarity_threshold": 0.9
+        }
+    ]
+) 
 
 list_trainer = ListTrainer(bot)
 

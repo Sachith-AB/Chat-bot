@@ -1,21 +1,12 @@
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
+from training_list import all_training_data
 
 bot = ChatBot("chatbot", read_only=False, logic_adapters=["chatterbot.logic.BestMatch"]) 
 
-
-list_to_train = [
-    "hi", 
-    "hi there",
-    "what is your name",
-    "I'm a chatbot",
-    "how old are you?",
-    "I'm ageless",
-]
-
 list_trainer = ListTrainer(bot)
 
-list_trainer.train(list_to_train)
+list_trainer.train(all_training_data)
 
 while True:
     
